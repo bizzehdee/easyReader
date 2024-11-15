@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace easyReader.Models.RSS
 {
-    [XmlRoot("RSS")]
+    [XmlRoot("rss")]
     public class RSSXML
     {
         [XmlAttribute("version")]

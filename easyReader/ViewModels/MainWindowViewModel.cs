@@ -100,7 +100,7 @@ namespace easyReader.ViewModels
                 return;
             }
 
-            await UpdateFeedList();
+            //await UpdateFeedList();
         }
 
         private async Task UpdateFeedList()

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using easyReader.Models.RSS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace easyReader.Services
 {
@@ -27,8 +29,18 @@ namespace easyReader.Services
             return response.StatusCode == System.Net.HttpStatusCode.OK;
         }
 
-        internal async Task<bool> TryAddFeed(string feedUrl)
+        public async Task<bool> ParseFeed(string feedUrl)
         {
+            return false;
+        }
+
+        public async Task<bool> TryAddFeed(string feedUrl)
+        {
+            var response = await client.GetAsync(feedUrl);
+            var rssXml = await response.Content.ReadAsStreamAsync();
+
+            var rssParser = new XmlSerializer(typeof(RSSXML));
+            var rssObj = (RSSXML?)rssParser.Deserialize(rssXml);
             return false;
         }
     }
